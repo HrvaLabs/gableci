@@ -2305,6 +2305,7 @@
     }
 
     function isRestaurantOpen(restaurantKey, isoDate) {
+        if (menuData.restaurants[restaurantKey]?.status === 'unavailable') return false;
         const day = getDayData(restaurantKey, isoDate);
         if (!day) {
             // No day entry at all — only consider open if type:both with weekly items
@@ -2466,7 +2467,7 @@
         const section = document.getElementById('per-rest-section');
         if (!perRest || Object.keys(perRest).length === 0) { section.innerHTML = ''; return; }
         _perRestData = perRest;
-        _activePerRestTab = activeRestaurant in perRest ? activeRestaurant : Object.keys(perRest)[0];
+        _activePerRestTab = activeRestaurant in perRest ? activeRestaurant : null;
         section.innerHTML = `
             <div class="per-rest-label">Preporuke</div>
             <div class="per-rest-cards" id="per-rest-cards"></div>`;
@@ -2502,6 +2503,7 @@
     }
 
     function _imgUrlFor(rest) {
+        if (menuData?.restaurants[rest]?.status === 'unavailable') return null;
         const base = MENU_IMAGES[rest];
         if (!base) return null;
         const v = (menuData && menuData.week) || new Date().toISOString().slice(0, 7);
@@ -2536,11 +2538,15 @@
 
     function _updatePhotoBtn() {
         const btn = document.getElementById('photo-btn');
-        if (btn) btn.style.display = MENU_IMAGES[activeRestaurant] ? '' : 'none';
+        if (btn) btn.style.display = _imgUrlFor(activeRestaurant) ? '' : 'none';
     }
 
     function renderWeekStrip(days) {
         const container = document.getElementById('week-strip-container');
+        if (menuData.restaurants[activeRestaurant]?.status === 'unavailable') {
+            container.innerHTML = '';
+            return;
+        }
         container.innerHTML = days.map((isoDate, i) => {
             const open = isRestaurantOpen(activeRestaurant, isoDate);
             const anyOpen = isAnyRestaurantOpen(isoDate);
@@ -2571,6 +2577,14 @@
         const content = document.getElementById('menu-content');
         const caption = document.getElementById('menu-caption');
         if (!rest) { content.innerHTML = ''; return; }
+        if (rest.status === 'unavailable') {
+            content.innerHTML = `<div class="closed-notice">
+                <div class="closed-notice-icon">📋</div>
+                <div class="closed-notice-text">Jelovnik za ovaj tjedan još nije objavljen</div>
+            </div>`;
+            caption.textContent = 'Nedostupan jelovnik ne znači da je restoran zatvoren.';
+            return;
+        }
 
         const dayData = getDayData(restaurantKey, isoDate);
         const isClosed = dayData ? dayData.closed : false;
@@ -2667,8 +2681,10 @@
         if (history.pushState) history.pushState(null, null, '#' + restaurantKey);
         _updatePhotoBtn();
 
-        if (_perRestData && restaurantKey in _perRestData) {
-            _activePerRestTab = restaurantKey;
+        if (_perRestData) {
+            _activePerRestTab = restaurantKey in _perRestData ? restaurantKey : null;
+            const cards = document.getElementById('per-rest-cards');
+            if (cards) cards.innerHTML = '';
             _refreshPerRestCards();
         }
 
@@ -2839,3 +2855,4 @@
 </script>
 </body>
 </html>
+
