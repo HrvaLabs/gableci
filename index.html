@@ -320,7 +320,7 @@
             {
                 "@type": "HowToStep",
                 "name": "Usporedite i odlučite",
-                "text": "Pogledajte AI preporuke (Danas preporučujemo, Najzdravije, Najobilnije, Najpovoljnije), usporedite restorane i odlučite gdje ćete danas na gablec."
+                "text": "Usporedite jela i cijene u restoranima i odlučite gdje ćete danas na gablec."
             }
         ]
     }
@@ -2223,14 +2223,16 @@
     }
 
     function getWeekDays(data) {
-        const keys = Object.keys(data.picks || {}).sort();
-        if (keys.length) return keys;
-        const base = new Date(data.generated_at);
-        const mon = new Date(base);
-        mon.setDate(base.getDate() - base.getDay() + 1);
-        return Array.from({length: 5}, (_, i) => {
-            const d = new Date(mon);
-            d.setDate(mon.getDate() + i);
+        // Mon–Sat of the published ISO week (e.g. 2026-W45), or of the current week if it is missing.
+        const match = /^(\d{4})-W(\d{2})$/.exec(data.week || '');
+        const now = new Date();
+        const monday = match
+            ? new Date(Date.UTC(+match[1], 0, 4 + (+match[2] - 1) * 7))
+            : new Date(Date.UTC(now.getFullYear(), now.getMonth(), now.getDate()));
+        monday.setUTCDate(monday.getUTCDate() - (monday.getUTCDay() + 6) % 7);
+        return Array.from({length: 6}, (_, i) => {
+            const d = new Date(monday);
+            d.setUTCDate(monday.getUTCDate() + i);
             return d.toISOString().slice(0, 10);
         });
     }
@@ -2374,7 +2376,9 @@
         const section = document.getElementById('picks-section');
         const strip = document.getElementById('picks-strip');
         if (!dayPicks) {
-            if (!isAnyRestaurantOpen(isoDate)) {
+            // A week without picks (the pipeline's AI_PICKS is off) shows no picks section at all.
+            const weekHasPicks = Object.keys(menuData.picks || {}).length > 0;
+            if (weekHasPicks && !isAnyRestaurantOpen(isoDate)) {
                 strip.innerHTML = `<div class="picks-empty">Danas nema gableca: svi su restorani zatvoreni</div>`;
                 document.getElementById('per-rest-section').innerHTML = '';
                 section.style.display = '';
