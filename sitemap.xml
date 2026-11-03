@@ -3,7 +3,7 @@
         xmlns:image="http://www.google.com/schemas/sitemap-image/1.1">
     <url>
         <loc>https://gableci.hrva.cc/</loc>
-        <lastmod>2026-06-01</lastmod>
+        <lastmod>2026-11-02</lastmod>
         <changefreq>weekly</changefreq>
         <priority>1.0</priority>
         <image:image>
@@ -15,11 +15,6 @@
             <image:loc>https://cdn.hrva.cc/gableci/stadion.jpg</image:loc>
             <image:title>Restoran Stadion Samobor - Tjedni Jelovnik</image:title>
             <image:caption>Tjedni jelovnik restorana Stadion u Samoboru - pregled na Gableci platformi</image:caption>
-        </image:image>
-        <image:image>
-            <image:loc>https://cdn.hrva.cc/gableci/vugrinscak.jpg</image:loc>
-            <image:title>Restoran Vugrinšćak Samobor - Tjedni Jelovnik</image:title>
-            <image:caption>Tjedni jelovnik restorana Vugrinšćak u Samoboru - pregled na Gableci platformi</image:caption>
         </image:image>
         <image:image>
             <image:loc>https://cdn.hrva.cc/gableci/breza.jpg</image:loc>
