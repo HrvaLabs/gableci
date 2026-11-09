@@ -1,0 +1,16 @@
+# Gableci
+
+> Gableci is a free directory of weekly lunch menus from restaurants in Samobor, Croatia, with no sign-up. The site is in Croatian.
+
+Gableci ("Gableci Samobor") collects the weekly menus of the Samobor restaurants Stadion and Breza on one page, so you can compare dishes and prices before choosing where to eat. It is free and needs no registration. It is informational and is not affiliated with the restaurants whose menus it shows.
+
+- Name: Gableci, a HrvaLabs project (https://hrvalabs.net/)
+- Author: Karlo Hrvačić (https://karlo.cc)
+- Contact: gableci@hrvalabs.net
+- Source: https://github.com/HrvaLabs/gableci
+- Language: Croatian
+
+## Pages
+
+- [Gableci Samobor](https://gableci.hrva.cc/): this week's menus for Stadion and Breza
+- [Privacy and terms of use](https://gableci.hrva.cc/privacy.html): what the site stores and the conditions of use (Croatian)
