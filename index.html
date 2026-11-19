@@ -296,33 +296,6 @@
     }
     </script>
 
-    <!-- Schema: HowTo (AEO — featured snippets for "kako koristiti") -->
-    <script type="application/ld+json">
-    {
-        "@context": "https://schema.org",
-        "@type": "HowTo",
-        "name": "Kako koristiti stranicu Gableci",
-        "description": "Kako pronaći i pregledati tjedne jelovnike samoborskih restorana na stranici Gableci.",
-        "step": [
-            {
-                "@type": "HowToStep",
-                "name": "Odaberite restoran",
-                "text": "Kliknite na jedan od restorana (Stadion ili Breza) i otvorit će se njegov tjedni jelovnik."
-            },
-            {
-                "@type": "HowToStep",
-                "name": "Pregledajte ponudu",
-                "text": "Kliknite na dan u tjednom pregledu i pogledajte koja su jela u ponudi i po kojoj cijeni."
-            },
-            {
-                "@type": "HowToStep",
-                "name": "Usporedite i odlučite",
-                "text": "Usporedite jela i cijene u restoranima i odlučite gdje ćete danas na gablec."
-            }
-        ]
-    }
-    </script>
-
     <!-- Schema: WebPage + Speakable (AEO / voice search) -->
     <script type="application/ld+json">
     {
@@ -351,9 +324,11 @@
             --card-border: #e4ddd2;
             --accent: #c04e1c;
             --accent-hover: #a34218;
+            --accent-ink: #a34218;
+            --accent-bright: #dc6b3a;
             --gold: #b8892a;
             --text: #ece7db;
-            --text-muted: #857e6e;
+            --text-muted: #938b7a;
             --text-dark: #1c1814;
             --text-dark-muted: #5a5244;
             --shadow: 0 24px 60px rgba(0, 0, 0, 0.45);
@@ -406,27 +381,6 @@
             animation: fadeUp 0.6s ease both;
         }
 
-        .eyebrow {
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            gap: 14px;
-            font-family: 'Plus Jakarta Sans', sans-serif;
-            font-size: 11px;
-            font-weight: 600;
-            letter-spacing: 0.22em;
-            text-transform: uppercase;
-            color: rgba(184, 137, 42, 0.65);
-            margin-bottom: 18px;
-        }
-
-        .eyebrow-line {
-            display: block;
-            height: 1px;
-            width: 52px;
-            background: rgba(184, 137, 42, 0.28);
-        }
-
         .site-title {
             font-family: 'Cormorant Garamond', serif;
             font-size: clamp(4.5rem, 16vw, 9rem);
@@ -445,7 +399,7 @@
             font-style: normal;
             letter-spacing: 0.35em;
             text-transform: uppercase;
-            color: var(--accent);
+            color: var(--accent-bright);
             margin-bottom: 10px;
         }
 
@@ -523,7 +477,7 @@
             color: #fff;
             border-color: var(--accent);
             font-weight: 600;
-            box-shadow: 0 4px 20px rgba(192, 78, 28, 0.32);
+            box-shadow: 0 4px 14px rgba(0, 0, 0, 0.35);
         }
 
         .tab-btn:focus-visible {
@@ -571,15 +525,12 @@
             margin-top: 5px;
             font-size: 12px;
             font-weight: 600;
-            color: var(--accent);
+            color: var(--accent-ink);
             text-decoration: none;
             letter-spacing: 0.01em;
-            opacity: 0.85;
-            transition: opacity var(--t);
         }
 
         .restaurant-phone:hover {
-            opacity: 1;
             text-decoration: underline;
         }
 
@@ -662,7 +613,6 @@
             line-height: 1.6;
             font-style: italic;
             text-align: center;
-            opacity: 0.85;
         }
 
         .picks-strip {
@@ -679,7 +629,7 @@
         }
 
         .best-of-week-label {
-            font-size: 10px;
+            font-size: 11px;
             font-weight: 600;
             letter-spacing: 0.18em;
             text-transform: uppercase;
@@ -702,7 +652,7 @@
         }
 
         .bow-category {
-            font-size: 10px;
+            font-size: 11px;
             font-weight: 600;
             letter-spacing: 0.18em;
             text-transform: uppercase;
@@ -711,7 +661,7 @@
         }
 
         .bow-date {
-            font-size: 10px;
+            font-size: 11px;
             color: var(--text-muted);
             margin-bottom: 3px;
         }
@@ -719,7 +669,7 @@
         .bow-restaurant {
             font-size: 11px;
             font-weight: 600;
-            color: var(--accent);
+            color: var(--accent-bright);
             margin-bottom: 3px;
         }
 
@@ -757,7 +707,7 @@
 
         .tag-chip:hover {
             border-color: var(--accent);
-            color: var(--accent);
+            color: var(--accent-ink);
         }
 
         .tag-chip.active {
@@ -779,7 +729,7 @@
         }
 
         .pick-category {
-            font-size: 10px;
+            font-size: 11px;
             font-weight: 600;
             letter-spacing: 0.18em;
             text-transform: uppercase;
@@ -790,7 +740,7 @@
         .pick-restaurant {
             font-size: 12px;
             font-weight: 600;
-            color: var(--accent);
+            color: var(--accent-bright);
             margin-bottom: 3px;
         }
 
@@ -821,7 +771,7 @@
             margin: 14px auto 0;
         }
         .per-rest-label {
-            font-size: 10px;
+            font-size: 11px;
             font-weight: 600;
             letter-spacing: 0.18em;
             text-transform: uppercase;
@@ -844,7 +794,7 @@
             padding: 10px 12px;
         }
         .per-rest-cat {
-            font-size: 9px;
+            font-size: 11px;
             font-weight: 700;
             letter-spacing: 0.18em;
             text-transform: uppercase;
@@ -853,7 +803,7 @@
         }
         .per-rest-badge {
             display: inline-block;
-            font-size: 9px;
+            font-size: 11px;
             font-weight: 600;
             letter-spacing: 0.08em;
             text-transform: uppercase;
@@ -877,7 +827,7 @@
             margin-bottom: 3px;
         }
         .per-rest-reason {
-            font-size: 10px;
+            font-size: 11px;
             color: var(--text-muted);
             line-height: 1.4;
         }
@@ -929,9 +879,13 @@
             background: #e8e2d9;
         }
 
+        .day-chip.active.day-chip-closed {
+            opacity: 1;
+        }
+
         .day-chip-name {
             display: block;
-            font-size: 9px;
+            font-size: 11px;
             font-weight: 700;
             letter-spacing: 0.1em;
             text-transform: uppercase;
@@ -940,7 +894,7 @@
         }
 
         .day-chip.active .day-chip-name {
-            color: rgba(255, 255, 255, 0.75);
+            color: #fff;
         }
 
         .day-chip-date {
@@ -993,7 +947,7 @@
         .menu-table td.price {
             text-align: right;
             font-weight: 600;
-            color: var(--accent);
+            color: var(--accent-ink);
             white-space: nowrap;
             width: 90px;
         }
@@ -1016,13 +970,13 @@
             font-weight: 700;
             letter-spacing: 0.18em;
             text-transform: uppercase;
-            color: var(--accent);
+            color: var(--accent-ink);
             background: var(--card);
         }
 
         .weekly-divider {
             padding: 10px 24px 6px;
-            font-size: 10px;
+            font-size: 11px;
             font-weight: 600;
             letter-spacing: 0.18em;
             text-transform: uppercase;
@@ -1071,7 +1025,7 @@
         .closed-notice-link {
             background: none;
             border: 1.5px solid var(--accent);
-            color: var(--accent);
+            color: var(--accent-ink);
             border-radius: 20px;
             padding: 6px 14px;
             font-size: 13px;
@@ -1092,8 +1046,7 @@
             padding: 24px 16px;
             font-size: 14px;
             font-weight: 600;
-            color: var(--text-dark-muted);
-            opacity: 0.7;
+            color: var(--text-muted);
         }
 
         /* ===== LOADING / ERROR ===== */
@@ -1118,6 +1071,16 @@
             font-size: 14px;
         }
 
+        .error-state .photo-btn {
+            color: #fca5a5;
+            border-color: #7f1d1d;
+        }
+
+        .error-state .photo-btn:hover {
+            color: #fff;
+            border-color: #fca5a5;
+        }
+
         .menu-caption {
             padding: 11px 28px;
             text-align: center;
@@ -1139,15 +1102,6 @@
             border-radius: var(--r);
             padding: 44px 40px;
             box-shadow: var(--shadow);
-        }
-
-        .info-eyebrow {
-            font-size: 11px;
-            font-weight: 600;
-            letter-spacing: 0.2em;
-            text-transform: uppercase;
-            color: var(--accent);
-            margin-bottom: 10px;
         }
 
         .info-heading {
@@ -1181,7 +1135,7 @@
         }
 
         .info-card a {
-            color: var(--accent);
+            color: var(--accent-ink);
             text-decoration: none;
             font-weight: 600;
         }
@@ -1221,7 +1175,7 @@
 
         .feature-card p {
             font-size: 13px;
-            color: rgba(174, 164, 144, 0.55);
+            color: var(--text-muted);
             margin: 0;
             line-height: 1.5;
         }
@@ -1350,7 +1304,7 @@
         }
 
         .shr-btn.fb {
-            background: #1877f2;
+            background: #0866ff;
         }
 
         .shr-btn.tw {
@@ -1359,7 +1313,7 @@
         }
 
         .shr-btn.wa {
-            background: #25d366;
+            background: #075e54;
         }
 
         .shr-btn.em {
@@ -1371,11 +1325,11 @@
         }
 
         .shr-btn.vi {
-            background: #7360f2;
+            background: #665cac;
         }
 
         .shr-btn.tg {
-            background: #229ed9;
+            background: #1a75a6;
         }
 
         .shr-btn.ot {
@@ -1385,7 +1339,7 @@
         }
 
         .shr-btn.ot.copied {
-            background: #2eb67d;
+            background: #1e7f55;
         }
 
         /* ===== FOOTER ===== */
@@ -1448,7 +1402,7 @@
 
         .footer-copy {
             font-size: 12px;
-            color: rgba(133, 126, 110, 0.5);
+            color: var(--text-muted);
         }
 
         /* ===== ANIMATIONS ===== */
@@ -1613,7 +1567,7 @@
             flex-shrink: 0;
         }
         .photo-btn:hover {
-            color: var(--accent);
+            color: var(--accent-ink);
             border-color: var(--accent);
             background: rgba(192, 78, 28, 0.05);
         }
@@ -1724,7 +1678,7 @@
             background: var(--bg);
             color: var(--text);
             font-weight: 600;
-            font-size: 10px;
+            font-size: 11px;
             letter-spacing: 0.12em;
             text-transform: uppercase;
         }
@@ -1737,7 +1691,7 @@
         }
         .restaurant-compare-table tr:last-child td { border-bottom: none; }
         .restaurant-compare-table td:first-child { font-weight: 600; color: var(--text-dark); }
-        .restaurant-compare-table a { color: var(--accent); text-decoration: none; }
+        .restaurant-compare-table a { color: var(--accent-ink); text-decoration: none; }
         .restaurant-compare-table a:hover { text-decoration: underline; }
 
         @media (max-width: 600px) {
@@ -1767,11 +1721,6 @@
 <a href="#main-content" class="skip-link">Preskoči na sadržaj</a>
 
 <header class="site-header">
-    <p class="eyebrow" aria-hidden="true">
-        <span class="eyebrow-line"></span>
-        Jelovnici Samobor
-        <span class="eyebrow-line"></span>
-    </p>
     <h1 class="site-title">Gableci<span class="site-title-geo">Samobor</span></h1>
     <p class="site-subtitle">Tjedni jelovnici samoborskih restorana</p>
 </header>
@@ -1870,7 +1819,6 @@
 <!-- Info / SEO Section -->
 <section class="info-section" aria-label="Informacije o gablecima u Samoboru">
     <div class="info-card">
-        <p class="info-eyebrow">O stranici</p>
         <h2 class="info-heading">Svi samoborski jelovnici na jednom mjestu</h2>
         <p>Gableci su besplatna stranica s tjednim jelovnicima restorana u Samoboru i okolici. Naziv „gablec” dolazi
             od njemačke riječi i označava tradicionalni poslovni ručak, topli obrok koji radnici jedu tijekom radnog
@@ -2108,7 +2056,7 @@
 <div id="photo-modal" class="photo-modal" style="display:none"
      role="dialog" aria-modal="true" aria-label="Fotografija jelovnika" onclick="closeMenuPhoto()">
     <button class="photo-modal-close" onclick="closeMenuPhoto()" aria-label="Zatvori">&#x2715;</button>
-    <img id="photo-modal-img" class="photo-modal-img" src="" alt="Fotografija jelovnika"
+    <img id="photo-modal-img" class="photo-modal-img" alt="Fotografija jelovnika"
          onclick="event.stopPropagation()">
 </div>
 
@@ -2473,7 +2421,7 @@
 
     function closeMenuPhoto() {
         document.getElementById('photo-modal').style.display = 'none';
-        document.getElementById('photo-modal-img').src = '';
+        document.getElementById('photo-modal-img').removeAttribute('src');
         document.removeEventListener('keydown', _handleModalKey);
     }
 
